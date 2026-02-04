@@ -1,7 +1,7 @@
 // Fonction serverless Vercel — simule une station éolienne demo
-// Accessible via : https://<votre-domaine>.vercel.app/api/eolienne
+// Accessible via : https://testdemo-poi.vercel.app/api/eolienne
 
-export default function handler(req, res) {
+module.exports = function handler(req, res) {
   // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
