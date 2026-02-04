@@ -1,0 +1,8 @@
+{
+  "name": "testdemopoi",
+  "version": "1.0.0",
+  "description": "Serveur demo POI — API simulée éolienne pour tester le PULL live data",
+  "scripts": {
+    "start": "node test-api-server.cjs"
+  }
+}
