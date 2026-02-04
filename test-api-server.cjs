@@ -19,18 +19,19 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // Générer une valeur aléatoire entre 10 et 50 MW
-  const randomPower = (Math.random() * 40 + 10).toFixed(2);
+  // Oscille entre 13 et 25 MW : monte de 2 par 5s, descend de 3 par 5s
+  const CYCLE = [13, 15, 17, 19, 21, 23, 25, 22, 19, 16];
+  const tick = Math.floor(Date.now() / 5000) % CYCLE.length;
+  const current_power = CYCLE[tick];
 
-  // Réponse JSON simple
   const response = {
-    current_power: parseFloat(randomPower),
+    current_power,
     unit: 'MW',
     timestamp: new Date().toISOString(),
     status: 'ok'
   };
 
-  console.log(`[${new Date().toLocaleTimeString()}] Requête reçue → Réponse: ${randomPower} MW`);
+  console.log(`[${new Date().toLocaleTimeString()}] Requête reçue → Réponse: ${current_power} MW`);
 
   res.writeHead(200);
   res.end(JSON.stringify(response));
